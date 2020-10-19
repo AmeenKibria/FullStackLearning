@@ -17,6 +17,17 @@ const Label = ({selected, votes}) => {
         </>
     )
 }
+const Statistics = (props) =>{
+  let i = props.votes.indexOf(Math.max(...props.votes));
+  return(
+    <div>
+      <h1>Most voted anecdote: </h1>
+      <div>{anecdotes[i]}</div>
+      <div>Has {props.votes[i]} votes</div>
+    </div>
+  )
+}
+
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
@@ -39,6 +50,7 @@ const App = (props) => {
       <Button handleClick={() => giveVote(selected)} text="Vote" />
       <Button handleClick={() => setRandom(anecdotes)} text="Next anecdote" />
       </p>
+      <Statistics votes = {votes} />
     </div>
   )
 }
