@@ -2,28 +2,51 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-const notes = [
-  {
-    id: 1,
-    content: 'HTML is easy',
-    date: '2020-01-10T17:30:31.098Z',
-    important: true
-  },
-  {
-    id: 2,
-    content: 'Browser can execute only Javascript',
-    date: '2020-01-10T18:39:34.091Z',
-    important: false
-  },
-  {
-    id: 3,
-    content: 'GET and POST are the most important methods of HTTP protocol',
-    date: '2020-01-10T19:20:14.298Z',
-    important: true
-  }
-]
 
-ReactDOM.render(
-  <App notes={notes} />,
-  document.getElementById('root')
-)
+const courses = [
+{
+    name: 'Half Stack application development',
+    id: 1,
+  parts: [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10,
+      id:1
+    },
+    {  
+      name: 'Using props to pass data',
+      exercises: 7,
+      id:2
+    },
+    {
+      name: 'State of a component',
+      exercises: 14,
+      id: 3
+    }
+  ]
+},
+
+  {
+     name: 'Node.js',
+     id: 2,
+     parts: [
+       {
+       name : 'Routing',
+       exercises: 3,
+       id: 1
+      
+    },
+    {
+      name: 'Middlewaret',
+      exercises: 7,
+      id: 2
+    }
+
+     ]
+    }
+  ]  
+  
+
+
+ReactDOM.render(<App course={courses}/>, document.getElementById('root'))
+
