@@ -1,11 +1,15 @@
 import React from 'react';
 
- const Filter = ({ filter, onFilterChange }) => {
-   return (
-     <div>
-       Filter shown with <input value={filter} onChange={onFilterChange}/>
-     </div>
-   )
- }
+// Filtering the phonebook by the searched name
 
- export default Filter
+const Filter = ({searchName, setSearchName}) => {
+    return (
+        <div>
+            Search for name: <input value={searchName} 
+                onChange={event => setSearchName(event.target.value)}
+            />
+        </div>
+    )
+}
+
+export default Filter

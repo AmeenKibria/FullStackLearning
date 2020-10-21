@@ -1,21 +1,25 @@
 import React from 'react';
 
- const PersonForm = ({ onFormSubmit, name, onNameChange, number, onNumberChange }) => {
-   return (
-     <>
-       <form onSubmit={onFormSubmit}>
-         <div>
-           Name: <input value={name} onChange={onNameChange}/>
-         </div>
-         <div>
-           Number: <input value={number} onChange={onNumberChange}/>
-         </div>
-         <div>
-           <button type="submit">add</button>
-         </div>
-       </form>
-     </>
-   )
- }
+// Component for adding a new person to the phonebook
 
- export default PersonForm
+const PersonForm = ({newName, setNewName, newNumber, setNewNumber, addPerson, focusName}) => {
+    return (
+        <form onSubmit={addPerson}>
+            <div>
+                Name: <input value={newName} onChange={event => setNewName(event.target.value)} 
+                    required autoComplete='off' ref={focusName}
+                />
+            </div>
+            <div>
+                Number: <input value={newNumber} onChange={event => setNewNumber(event.target.value)} 
+                    required autoComplete='off'
+                />
+            </div>
+            <div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    );
+};
+
+export default PersonForm;

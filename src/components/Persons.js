@@ -1,13 +1,24 @@
-import React from 'react'
+import React from 'react';
 
- const Person = ({name, number}) => <div>{name} {number}</div> 
+// Display all the persons in the phonebook
 
- const Persons = ({ persons, filter }) => {
-   let filteredPersons = persons
-   if (filter) {
-     filteredPersons = persons.filter(person => new RegExp(filter, "i").test(person.name));
-   }
-   return filteredPersons.map(person => <Person key={person.name} name={person.name} number={person.number}/>)
- }
+const Persons = ({persons, searchName, deletePerson}) => {
+    return (
+        persons.length ?
+        <ul style={{listStyle: 'none', padding: 0}}>
+            {
+                persons.filter(person => person.name.toLowerCase().includes(searchName.toLowerCase()))
+                .map(person => (
+                    <li key={person.name}>
+                        {person.name} {person.number} &nbsp;
+                        <button onClick={() => deletePerson(person.id, person.name)}>Delete</button>
+                    </li>
+                ))
+            }
+        </ul>
+        :
+        <p>Loading contacts...</p>
+    )
+}
 
- export default Persons
+export default Persons
